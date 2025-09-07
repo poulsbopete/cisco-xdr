@@ -1,4 +1,4 @@
-import { Bot, Search, FileText, Target, AlertTriangle, Clock, Users, Globe, Lock, CheckCircle, XCircle, ExternalLink } from 'lucide-react'
+import { Bot, Search, FileText, Target, Clock, CheckCircle, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export function AnalystCopilot() {

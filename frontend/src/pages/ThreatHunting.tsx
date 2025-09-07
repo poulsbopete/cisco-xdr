@@ -1,6 +1,6 @@
-import { Brain, Search, Target, AlertTriangle, Clock, Users, Globe, Lock, ArrowRight, ExternalLink } from 'lucide-react'
+import { Brain, Search, Target, Clock, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts'
 
 export function ThreatHunting() {
   // Chart data
@@ -15,12 +15,12 @@ export function ThreatHunting() {
   ]
 
   const mitreTechniquesData = [
-    { technique: 'T1078', count: 15, severity: 'High' },
-    { technique: 'T1055', count: 12, severity: 'High' },
-    { technique: 'T1041', count: 8, severity: 'Medium' },
-    { technique: 'T1027', count: 6, severity: 'Medium' },
-    { technique: 'T1486', count: 4, severity: 'Critical' },
-    { technique: 'T1074', count: 3, severity: 'Low' }
+    { technique: 'T1078', count: 15, severity: 'High', description: 'Valid Accounts' },
+    { technique: 'T1055', count: 12, severity: 'High', description: 'Process Injection' },
+    { technique: 'T1041', count: 8, severity: 'Medium', description: 'Exfiltration Over C2' },
+    { technique: 'T1027', count: 6, severity: 'Medium', description: 'Obfuscated Files' },
+    { technique: 'T1486', count: 4, severity: 'Critical', description: 'Data Encrypted' },
+    { technique: 'T1074', count: 3, severity: 'Low', description: 'Data Staged' }
   ]
 
   const threatStories = [
@@ -188,28 +188,34 @@ export function ThreatHunting() {
               </h3>
               <div style={{ height: '300px', width: '100%' }}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={mitreTechniquesData} layout="horizontal">
+                  <BarChart data={mitreTechniquesData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                    <XAxis type="number" stroke="#6b7280" fontSize={12} />
-                    <YAxis 
+                    <XAxis 
                       dataKey="technique" 
-                      type="category" 
                       stroke="#6b7280" 
                       fontSize={12}
-                      width={80}
+                      angle={-45}
+                      textAnchor="end"
+                      height={60}
                     />
+                    <YAxis stroke="#6b7280" fontSize={12} />
                     <Tooltip 
                       contentStyle={{ 
                         backgroundColor: 'white', 
                         border: '1px solid #e5e7eb', 
                         borderRadius: '0.5rem',
                         boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
-                      }} 
+                      }}
+                      formatter={(value, _, props) => {
+                        const item = mitreTechniquesData.find(d => d.technique === props.payload.technique);
+                        return [`${value} occurrences`, item?.description || 'Unknown'];
+                      }}
+                      labelFormatter={(label) => `Technique: ${label}`}
                     />
                     <Bar 
                       dataKey="count" 
                       fill="#1e40af"
-                      radius={[0, 4, 4, 0]}
+                      radius={[4, 4, 0, 0]}
                     />
                   </BarChart>
                 </ResponsiveContainer>
@@ -220,7 +226,7 @@ export function ThreatHunting() {
                     display: 'flex', 
                     alignItems: 'center', 
                     gap: '0.5rem',
-                    padding: '0.25rem 0.5rem',
+                    padding: '0.5rem',
                     backgroundColor: 'white',
                     borderRadius: '0.25rem',
                     border: '1px solid #e5e7eb'
@@ -233,9 +239,14 @@ export function ThreatHunting() {
                                       item.severity === 'High' ? '#ea580c' : 
                                       item.severity === 'Medium' ? '#d97706' : '#16a34a'
                     }}></div>
-                    <span style={{ fontSize: '0.75rem', color: '#374151', fontWeight: '500' }}>
-                      {item.technique}: {item.count}
-                    </span>
+                    <div style={{ display: 'flex', flexDirection: 'column' }}>
+                      <span style={{ fontSize: '0.75rem', color: '#374151', fontWeight: '600' }}>
+                        {item.technique}: {item.count}
+                      </span>
+                      <span style={{ fontSize: '0.625rem', color: '#6b7280' }}>
+                        {item.description}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>

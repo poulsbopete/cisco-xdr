@@ -1,4 +1,4 @@
-import { Target, AlertTriangle, CheckCircle, XCircle, Filter, TrendingUp, Clock, Users, Shield, Zap } from 'lucide-react'
+import { Target, CheckCircle, XCircle, Filter, TrendingUp, Clock, Shield, Zap } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export function AlertTriage() {

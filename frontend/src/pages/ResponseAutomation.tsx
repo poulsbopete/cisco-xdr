@@ -1,4 +1,4 @@
-import { Zap, Play, Pause, Shield, User, Monitor, Lock, Globe, CheckCircle, XCircle, AlertTriangle, Target, Clock } from 'lucide-react'
+import { Zap, Shield, User, Monitor, Globe, CheckCircle, XCircle, AlertTriangle, Target, Clock } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export function ResponseAutomation() {

@@ -1,4 +1,4 @@
-import { FileText, Search, Target, AlertTriangle, Clock, Users, Globe, Lock, CheckCircle, XCircle, ExternalLink } from 'lucide-react'
+import { FileText, Search, Target, Clock, Users, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export function IncidentBuilder() {

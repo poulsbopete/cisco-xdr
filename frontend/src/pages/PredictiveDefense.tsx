@@ -1,4 +1,4 @@
-import { TrendingUp, Shield, Target, AlertTriangle, Clock, Users, Globe, Lock, CheckCircle, XCircle, ExternalLink, Activity } from 'lucide-react'
+import { TrendingUp, Shield, Target, Clock, Users, CheckCircle, ExternalLink } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from 'recharts'
 

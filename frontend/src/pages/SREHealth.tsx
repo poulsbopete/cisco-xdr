@@ -1,4 +1,4 @@
-import { Activity, Server, Database, Network, Users, Globe, Lock, CheckCircle, XCircle, ExternalLink, AlertTriangle, TrendingUp } from 'lucide-react'
+import { Activity, Server, Users, CheckCircle, ExternalLink, AlertTriangle, TrendingUp } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export function SREHealth() {
