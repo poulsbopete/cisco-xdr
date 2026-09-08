@@ -7,7 +7,7 @@ const { SemanticResourceAttributes } = require('@opentelemetry/semantic-conventi
 
 // Elastic OTLP Configuration
 const ELASTIC_OTLP_ENDPOINT = 'https://a5630c65c43f4f299288c392af0c2f45.ingest.us-east-1.aws.elastic.cloud:443';
-const ELASTIC_API_KEY = 'bzd3bEpaa0IyQXpMVkdwcjltSU86SS1TekJGZ01zWG45RWN5cnhyd3JYUQ==';
+const ELASTIC_API_KEY = process.env.ELASTIC_API_KEY || process.env.ES_API_KEY || '';
 
 // Create OTLP exporters
 const traceExporter = new OTLPTraceExporter({
